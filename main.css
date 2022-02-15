@@ -6,8 +6,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
 }
 
 /* HEADER */
@@ -53,11 +52,11 @@ body {
 }
 
 .content > * {
-  margin: 0 1rem;
+  margin: 0 var(--side-padding);
 }
 
 .content .intro, .content h2 {
-  font-weight: bold;
+  font-weight: 600;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -89,7 +88,7 @@ body {
 
 .fields {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.5rem 5.5rem;
 }
 
 .field {
@@ -132,4 +131,53 @@ body {
 
 .login-link:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* HEADER */
+
+  .header {
+    display: grid;
+    align-content: space-between;
+  }
+
+  .logo {
+    margin-top: 7rem;
+  }
+
+  /* MAIN CONTENT */
+
+  .content {
+    --side-padding: 3rem;
+    align-content: center;
+  }
+
+  .content .intro {
+    max-width: 42.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .content .intro, .content h2 {
+    font-size: 1.4rem;
+  }
+
+  /* FORM */
+
+  .fields {
+    grid-template-columns: auto auto;
+    justify-items: left;
+    justify-content: left;
+  }
+
+  .field input {
+    width: clamp(15rem, 20vw, 20rem);
+  }
+
+  .button {
+    font-size: 1.2rem;
+  }
 }
