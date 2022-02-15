@@ -101,6 +101,11 @@ body {
   border: 1px solid #e4e6ea;
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
+  background-color: #fffefe;
+}
+
+.field input.error {
+  border-color: #c02228;
 }
 
 .field input:focus {
@@ -132,6 +137,8 @@ body {
 .login-link:hover {
   text-decoration: underline;
 }
+
+/* DESKTOP STYLES */
 
 @media (min-width: 1024px) {
   body {
