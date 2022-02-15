@@ -1,7 +1,8 @@
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address,
 big, cite, del, em, img, ins, kbd, q, small, strong, dl, dt, dd, ol,
 ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td,
-article, aside, figure, figcaption, footer, header, nav, output, section, time {
+article, aside, figure, figcaption, footer, header, nav, output, section, time,
+button, input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -15,5 +16,20 @@ ul, ol {
 
 a {
   color: inherit;
-  text-decoration: inherit;
+}
+
+button, input {
+  background-color: unset;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+em {
+  font-style: italic;
 }
