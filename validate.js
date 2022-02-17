@@ -63,7 +63,7 @@ function validatePasswordEquality() {
 
 function validateForm() {
   validateEmail();
-  validatePasswords();
+  validatePasswordEquality();
   requiredInputs.forEach(checkEmpty);
 }
 
