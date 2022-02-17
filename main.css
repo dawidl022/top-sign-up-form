@@ -107,6 +107,10 @@ body {
   max-width: 25rem;
 }
 
+.field .valid {
+  border-color: rgb(63, 205, 50);
+}
+
 .field .message, .field .error-message {
   letter-spacing: normal;
   text-transform: none;
@@ -121,11 +125,11 @@ body {
   min-height: 1.5rem;
 }
 
-.field input:where(.error, .empty) {
+.field input:is(.empty, .error) {
   border-color: var(--error-color);
 }
 
-.field input:where(.error, .empty) ~ .error-message {
+.field input:is(.error, .empty) ~ .error-message {
   visibility: visible;
 }
 

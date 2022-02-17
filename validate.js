@@ -1,7 +1,6 @@
-// TODO add green accent to symbolize input is valid
-
 const form = document.querySelector("#sign-up-form")
 const requiredInputs = document.querySelectorAll(".form input[required]");
+
 const emailField = document.querySelector(".form input#email");
 const passwordField = document.querySelector(".form input#password");
 const passwordConfirmField = document.querySelector(".form input#password-confirm");
@@ -67,14 +66,22 @@ function validateForm() {
   requiredInputs.forEach(checkEmpty);
 }
 
+function addValidClassIfNoError(formControl) {
+  if (!formControl.classList.contains("error")) {
+    formControl.classList.add("valid");
+  }
+}
+
 function applyInteractiveValidation(formControl, validationFunc) {
   formControl.addEventListener("blur", () => {
     validationFunc(formControl);
+    addValidClassIfNoError(formControl);
   });
 
   formControl.addEventListener("keyup", () => {
     if (formControl.classList.contains("error")) {
       validationFunc(formControl);
+      addValidClassIfNoError(formControl);
     }
   })
 }
@@ -91,3 +98,8 @@ form.addEventListener("submit", e => {
   e.preventDefault();
   validateForm();
 })
+
+document.querySelectorAll(".form input:not([required])")
+  .forEach(control => control.addEventListener("blur", () => {
+    addValidClassIfNoError(control);
+  }));
