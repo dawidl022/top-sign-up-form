@@ -70,6 +70,8 @@ body {
 /* FORM */
 
 .form {
+  --error-color: #c02228;
+
   margin: 0;
 }
 
@@ -88,10 +90,10 @@ body {
 
 .fields {
   display: grid;
-  gap: 1.5rem 5.5rem;
+  gap: 0.2rem 5.5rem;
 }
 
-.field {
+.field label {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
@@ -102,15 +104,38 @@ body {
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
   background-color: #fffefe;
+  max-width: 25rem;
 }
 
-.field input.error {
-  border-color: #c02228;
+.field .message, .field .error-message {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.field .error-message {
+  color: var(--error-color);
+}
+
+.field input ~ .error-message {
+  visibility: hidden;
+  min-height: 1.5rem;
+}
+
+.field input:where(.error, .empty) {
+  border-color: var(--error-color);
+}
+
+.field input:where(.error, .empty) ~ .error-message {
+  visibility: visible;
 }
 
 .field input:focus {
   border-color: #0050d2;
   box-shadow: 2px 2px 3px #c5c5c5;
+}
+
+.field .error-color {
+  color: var(--error-color);
 }
 
 .button {

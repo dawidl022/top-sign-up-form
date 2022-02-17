@@ -15,6 +15,7 @@
     <link rel="icon" href="assets/favicon32.png">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
+    <script src="validate.js" defer></script>
   </head>
 
   <body>
@@ -44,35 +45,51 @@
         <p>You <em>know</em> you want to.</p>
       </section>
       <section class="form">
-        <form onsubmit="return false;">
+        <form novalidate id="sign-up-form">
           <div class="container">
             <h2>Let's do this!</h2>
 
             <div class="fields">
               <div class="field">
-                <label for="first-name">First name</label>
-                <input type="text" name="first-name" id="first-name" autocomplete="given-name">
+                <label for="first-name">First name
+                  <input type="text" name="first-name" id="first-name"
+                    autocomplete="given-name" required>
+                  <strong class="error-message"></strong>
+                </label>
               </div>
               <div class="field">
-                <label for="last-name">Last name</label>
-                <input type="text" name="last-name" id="last-name" autocomplete="family-name">
+                <label for="last-name">Last name
+                  <input type="text" name="last-name" id="last-name" autocomplete="family-name">
+                  <strong class="error-message"></strong>
+                </label>
               </div>
               <div class="field">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
+                <label for="email">Email
+                  <input type="email" name="email" id="email" required>
+                  <strong class="error-message"></strong>
+                </label>
               </div>
               <div class="field">
-                <label for="phone-number">Phone number</label>
-                <input type="tel" name="phone-number" id="phone-number" autocomplete="tel">
+                <label for="phone-number">Phone number
+                  <input type="tel" name="phone-number" id="phone-number" autocomplete="tel">
+                  <strong class="error-message"></strong>
+                </label>
               </div>
               <div class="field">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <label for="password">Password
+                  <input type="password" name="password" id="password" required>
+                  <strong class="message">
+                    Password must have at least 8 characters
+                  </strong>
+                  <strong class="error-message"></strong>
+                </label>
               </div>
               <div class="field">
-                <label for="password-confirm">Password Confirmation</label>
-                <input type="password" name="password-confirm"
-                  id="password-confirm">
+                <label for="password-confirm">Password Confirmation
+                  <input type="password" name="password-confirm" required
+                    id="password-confirm">
+                  <strong class="error-message"></strong>
+                </label>
               </div>
             </div>
           </div>
