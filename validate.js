@@ -1,3 +1,5 @@
+// TODO add green accent to symbolize input is valid
+
 const form = document.querySelector("#sign-up-form")
 const requiredInputs = document.querySelectorAll(".form input[required]");
 const emailField = document.querySelector(".form input#email");
@@ -7,31 +9,37 @@ const passwordConfirmField = document.querySelector(".form input#password-confir
 function checkEmpty(inputElement) {
   if (inputElement.value === "") {
     inputElement.classList.add("empty");
-    inputElement.parentElement.querySelector(".error-message").textContent = "This field is required";
+    setErrorMessage(inputElement, "This field is required");
   } else if (inputElement.classList.contains("empty")) {
     inputElement.classList.remove("empty");
-    inputElement.parentElement.querySelector(".error-message").textContent = "";
+    setErrorMessage(inputElement, "");
   }
+}
+
+function setErrorMessage(element, text, className = ".error-message") {
+  element.parentElement.querySelector(className).textContent = text;
 }
 
 function validateEmail() {
   const emailEx = /^[^.](.*[^.])?@[^.-](.*[^.-])?(\.[^.-](.*[^.-])?)*$/i;
   if (!emailField.value.match(emailEx)) {
     emailField.classList.add("error");
-    emailField.parentElement.querySelector(".error-message").textContent = "Please provide a valid email"
+    setErrorMessage(emailField, "Please provide a valid email");
   } else {
     emailField.classList.remove("error");
-    emailField.parentElement.querySelector(".error-message").textContent = ""
+    setErrorMessage(emailField, "");
   }
 }
 
 function validatePasswordLength() {
   if (passwordField.value.length < 8) {
     passwordField.classList.add("error");
-    passwordField.parentElement.querySelector(".message").classList.add("error-color")
+    passwordField.parentElement.querySelector(".message")
+      .classList.add("error-color");
   } else {
     passwordField.classList.remove("error")
-    passwordField.parentElement.querySelector(".message").classList.remove("error-color")
+    passwordField.parentElement.querySelector(".message")
+      .classList.remove("error-color")
   }
 
   if (passwordConfirmField.value) {
@@ -44,11 +52,11 @@ function validatePasswordEquality() {
   if (passwordConfirmField.value != passwordField.value) {
     passwordField.classList.add("error");
     passwordConfirmField.classList.add("error")
-    passwordField.parentElement.querySelector(".error-message").textContent = "Passwords do not match"
+    setErrorMessage(passwordField, "Passwords do not match");
   } else {
     passwordField.classList.remove("error");
     passwordConfirmField.classList.remove("error");
-    passwordField.parentElement.querySelector(".error-message").textContent = "";
+    setErrorMessage(passwordField, "");
     validatePasswordLength();
   }
 }
